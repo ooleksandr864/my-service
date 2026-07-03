@@ -25,11 +25,11 @@ jobs:
       # Step 2: Get the last commit SHA from the PR
       - name: PR Review
         uses: anthropics/claude-action@v1
-        wait:
+        with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           track_progress: true
-          promt: |
+          prompt: |
             REPO: ${{ github.repository }}
             PR: ${{ github.event.pull_request.number }}
             
