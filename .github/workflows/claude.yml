@@ -20,7 +20,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
 
       # Step 2: Get the last commit SHA from the PR
       - name: PR Review
@@ -28,6 +28,7 @@ jobs:
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          model: claude-haiku-3-5-20241022
           track_progress: true
           prompt: |
             REPO: ${{ github.repository }}
@@ -37,4 +38,3 @@ jobs:
             Please review the following code changes in this pull request and provide a detailed review. 
             Focus on code quality, maintainability, performance, security, and adherence to best practices. 
             Provide constructive feedback and suggestions for improvement.
-
